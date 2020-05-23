@@ -1,3 +1,20 @@
+# Miscellaneous
+*.pyc
+.atom/
+.buildlog/
+.history
+.svn/
+.idea/
+/build/
+
+# Web related
+lib/generated_plugin_registrant.dart
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
 
 # Created by https://www.gitignore.io/api/android,flutter,androidstudio
 # Edit at https://www.gitignore.io/?templates=android,flutter,androidstudio
