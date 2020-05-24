@@ -1,6 +1,6 @@
 # cookio
 
-A new Flutter application.
+A new Flutter application taking over your decisions for the next meal.
 
 ## Database
 
