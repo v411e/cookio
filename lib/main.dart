@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:search_widget/search_widget.dart';
+import 'section_nextdays.dart';
 
 void main() {
   runApp(MyApp());
@@ -72,15 +74,8 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
+      body: SafeArea(
+        child: ListView(
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -95,23 +90,118 @@ class _MyHomePageState extends State<MyHomePage> {
           // center the children vertically; the main axis here is the vertical
           // axis because Columns are vertical (the cross axis would be
           // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Column(
+              children: <Widget>[
+                SearchWidget(
+                  dataList: [1, 2, 3],
+                  popupListItemBuilder: null, //TODO: Implement
+                  selectedItemBuilder: null, //TODO: Implement
+                  queryBuilder: null, //TODO: Implement
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/shelf.png'),
+                        fit: BoxFit.fitWidth),
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        child: Image.asset(
+                          'assets/images/milk.png',
+                          height: 40.0,
+                        ),
+                        margin: EdgeInsets.only(
+                            left: 10.0, right: 10.0, bottom: 30.0),
+                      ),
+                      Container(
+                        child: Image.asset(
+                          'assets/images/milk.png',
+                          height: 40.0,
+                        ),
+                        margin: EdgeInsets.only(
+                            left: 10.0, right: 10.0, bottom: 30.0),
+                      ),
+                      Container(
+                        child: Image.asset(
+                          'assets/images/milk.png',
+                          height: 40.0,
+                        ),
+                        margin: EdgeInsets.only(
+                            left: 10.0, right: 10.0, bottom: 30.0),
+                      ),
+                      Container(
+                        child: Image.asset(
+                          'assets/images/milk.png',
+                          height: 40.0,
+                        ),
+                        margin: EdgeInsets.only(
+                            left: 10.0, right: 10.0, bottom: 30.0),
+                      ),
+                      Container(
+                        child: Image.asset(
+                          'assets/images/milk.png',
+                          height: 40.0,
+                        ),
+                        margin: EdgeInsets.only(
+                            left: 10.0, right: 10.0, bottom: 30.0),
+                      ),
+                    ],
+                  ),
+                  margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 10.0),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/shelf.png'),
+                        fit: BoxFit.fitWidth),
+                  ),
+                  child: Row(
+                    children: <Widget>[
+                      Container(
+                        child: Image.asset(
+                          'assets/images/milk.png',
+                          height: 40.0,
+                        ),
+                        margin: EdgeInsets.only(
+                            left: 10.0, right: 10.0, bottom: 30.0),
+                      ),
+                    ],
+                  ),
+                  margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 10.0),
+                ),
+                Container(
+                  child: Image.asset('assets/images/shelf.png'),
+                  margin: EdgeInsets.fromLTRB(10.0, 30.0, 10.0, 10.0),
+                ),
+                NextDaysSection(
+                  'Today',
+                  'Nudeln mit Tomatensauce',
+                  10,
+                  2,
+                  ['Nudeln', 'Tomaten', 'Knoblauch'],
+                ),
+                NextDaysSection(
+                  'Tomorrow',
+                  'Nudeln mit Tomatensauce',
+                  10,
+                  2,
+                  ['Nudeln', 'Tomaten', 'Knoblauch'],
+                ),
+                NextDaysSection(
+                  'Monday',
+                  'Nudeln mit Tomatensauce',
+                  10,
+                  2,
+                  ['Nudeln', 'Tomaten', 'Knoblauch'],
+                ),
+              ],
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
