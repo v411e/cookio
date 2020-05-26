@@ -116,6 +116,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.4.0"
+  pull_to_reveal:
+    dependency: "direct main"
+    description:
+      name: pull_to_reveal
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.1"
   quiver:
     dependency: transitive
     description:
