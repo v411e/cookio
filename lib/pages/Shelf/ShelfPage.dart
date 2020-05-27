@@ -33,12 +33,6 @@ class _ShelfPage extends State<ShelfPage> {
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            SearchWidget(
-              dataList: [1, 2, 3],
-              popupListItemBuilder: null, //TODO: Implement
-              selectedItemBuilder: null, //TODO: Implement
-              queryBuilder: null, //TODO: Implement
-            ),
             Text('Kühlschrank:'),
             Expanded(
               flex: 1,
