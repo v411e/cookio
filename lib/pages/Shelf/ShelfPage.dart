@@ -17,6 +17,7 @@ class ShelfPage extends StatefulWidget {
 class _ShelfPage extends State<ShelfPage> {
   static const _target1 = 0;
   static const _target2 = 1;
+  static const _target3 = 2;
 
   Map dragMap = {
     new DraggableProduct(): _target1,
@@ -25,64 +26,98 @@ class _ShelfPage extends State<ShelfPage> {
     new DraggableProduct(): _target2,
     new DraggableProduct(): _target2,
     new DraggableProduct(): _target2,
+    new DraggableProduct(): _target3,
+    new DraggableProduct(): _target3,
+    new DraggableProduct(): _target3,
+    new DraggableProduct(): _target3,
+    new DraggableProduct(): _target3,
+    new DraggableProduct(): _target3,
   };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Column(
-          children: <Widget>[
-            Text('Kühlschrank:'),
-            Expanded(
-              flex: 1,
-              child: Container(
-                width: double.infinity,
-                color: Colors.grey,
-                child: DragTarget(
-                  builder: (BuildContext context,
-                      List<DraggableProduct> incoming, List rejected) {
-                    return Wrap(
-                      children: dragMaptoList(map: dragMap, target: _target1),
-                    );
-                  },
-                  onWillAccept: (data) => true,
-                  onAccept: (data) {
-                    print(data);
-                    setState(
-                      () {
-                        dragMap.update(data, (value) => _target1);
+        child: Stack(
+          children: [
+            Column(
+              children: <Widget>[
+                Text('Kühlschrank:'),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    child: DragTarget(
+                      builder: (BuildContext context,
+                          List<DraggableProduct> incoming, List rejected) {
+                        return Wrap(
+                          children:
+                              dragMaptoList(map: dragMap, target: _target1),
+                        );
                       },
-                    );
-                  },
-                  onLeave: (data) {},
+                      onWillAccept: (data) => true,
+                      onAccept: (data) {
+                        print(data);
+                        setState(
+                          () {
+                            dragMap.update(data, (value) => _target1);
+                          },
+                        );
+                      },
+                      onLeave: (data) {},
+                    ),
+                  ),
                 ),
-              ),
+                Text('Regal:'),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    width: double.infinity,
+                    child: DragTarget(
+                      builder: (BuildContext context,
+                          List<DraggableProduct> incoming, List rejected) {
+                        return Wrap(
+                          children:
+                              dragMaptoList(map: dragMap, target: _target2),
+                        );
+                      },
+                      onWillAccept: (data) => true,
+                      onAccept: (data) {
+                        //debugger();
+                        setState(
+                          () {
+                            dragMap.update(data, (value) => _target2);
+                          },
+                        );
+                      },
+                      onLeave: (data) {},
+                    ),
+                  ),
+                ),
+              ],
             ),
-            Text('Regal:'),
-            Expanded(
-              flex: 1,
-              child: Container(
-                width: double.infinity,
-                color: Colors.grey,
-                child: DragTarget(
-                  builder: (BuildContext context,
-                      List<DraggableProduct> incoming, List rejected) {
-                    return Wrap(
-                      children: dragMaptoList(map: dragMap, target: _target2),
-                    );
-                  },
-                  onWillAccept: (data) => true,
-                  onAccept: (data) {
-                    //debugger();
-                    setState(
-                      () {
-                        dragMap.update(data, (value) => _target2);
-                      },
-                    );
-                  },
-                  onLeave: (data) {},
-                ),
+            Visibility(
+              visible: dragMaptoList(map: dragMap, target: _target3).length > 0,
+              child: DraggableScrollableSheet(
+                minChildSize: 0.1,
+                initialChildSize: 0.1,
+                maxChildSize: 0.7,
+                builder:
+                    (BuildContext context, ScrollController scrollController) {
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: Colors.orangeAccent,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(10),
+                          topRight: Radius.circular(10)),
+                    ),
+                    child: ListView(
+                      controller: scrollController,
+                      children: [Center(child: Text('Aus dem letzten Einkauf'))]
+                        ..addAll(dragMaptoList(map: dragMap, target: _target3)),
+                    ),
+                  );
+                },
               ),
             ),
           ],
@@ -116,7 +151,8 @@ class _DraggableProduct extends State<DraggableProduct> {
   Widget build(BuildContext context) {
     print('build ' + this.widget.hashCode.toString());
     //debugger();
-    return Draggable(
+    return LongPressDraggable(
+      hapticFeedbackOnStart: true,
       data: this.widget,
       child: Container(
         color: Colors.lightGreen,
