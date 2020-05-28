@@ -183,13 +183,16 @@ class _ShelfPage extends State<ShelfPage> {
                     child: Column(children: [
                       Container(
                         margin: EdgeInsets.only(left: 5, top: 5, right: 5),
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'Gerade eingekauft:',
-                            style: TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.normal,
-                                color: Colors.black),
+                        child: SingleChildScrollView(
+                          controller: scrollController,
+                          child: RichText(
+                            text: TextSpan(
+                              text: 'Gerade eingekauft:',
+                              style: TextStyle(
+                                  fontSize: 20.0,
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.black),
+                            ),
                           ),
                         ),
                       ),
