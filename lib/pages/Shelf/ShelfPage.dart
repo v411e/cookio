@@ -1,11 +1,65 @@
-import 'dart:collection';
-import 'dart:developer';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:search_widget/search_widget.dart';
+import 'package:cookio/pages/DraggableProduct.dart';
 
 class ShelfPage extends StatefulWidget {
+  final Map dragMap = {
+    new DraggableProduct(): 0,
+    new DraggableProduct(): 0,
+    new DraggableProduct(): 0,
+    new DraggableProduct(): 1,
+    new DraggableProduct(): 1,
+    new DraggableProduct(): 1,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+  };
+
   ShelfPage();
 
   @override
@@ -15,25 +69,6 @@ class ShelfPage extends StatefulWidget {
 }
 
 class _ShelfPage extends State<ShelfPage> {
-  static const _target1 = 0;
-  static const _target2 = 1;
-  static const _target3 = 2;
-
-  Map dragMap = {
-    new DraggableProduct(): _target1,
-    new DraggableProduct(): _target1,
-    new DraggableProduct(): _target1,
-    new DraggableProduct(): _target2,
-    new DraggableProduct(): _target2,
-    new DraggableProduct(): _target2,
-    new DraggableProduct(): _target3,
-    new DraggableProduct(): _target3,
-    new DraggableProduct(): _target3,
-    new DraggableProduct(): _target3,
-    new DraggableProduct(): _target3,
-    new DraggableProduct(): _target3,
-  };
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,18 +76,31 @@ class _ShelfPage extends State<ShelfPage> {
         child: Stack(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Text('Kühlschrank:'),
+                Container(
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Kühlschrank',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black),
+                    ),
+                  ),
+                  margin: EdgeInsets.all(5),
+                ),
                 Expanded(
                   flex: 1,
                   child: Container(
+                    margin: EdgeInsets.all(5),
                     width: double.infinity,
                     child: DragTarget(
                       builder: (BuildContext context,
                           List<DraggableProduct> incoming, List rejected) {
                         return Wrap(
                           children:
-                              dragMaptoList(map: dragMap, target: _target1),
+                              dragMaptoList(map: widget.dragMap, target: 0),
                         );
                       },
                       onWillAccept: (data) => true,
@@ -60,7 +108,7 @@ class _ShelfPage extends State<ShelfPage> {
                         print(data);
                         setState(
                           () {
-                            dragMap.update(data, (value) => _target1);
+                            widget.dragMap.update(data, (value) => 0);
                           },
                         );
                       },
@@ -68,17 +116,29 @@ class _ShelfPage extends State<ShelfPage> {
                     ),
                   ),
                 ),
-                Text('Regal:'),
+                Container(
+                  margin: EdgeInsets.all(5),
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Regal',
+                      style: TextStyle(
+                          fontSize: 20.0,
+                          fontWeight: FontWeight.normal,
+                          color: Colors.black),
+                    ),
+                  ),
+                ),
                 Expanded(
                   flex: 1,
                   child: Container(
+                    margin: EdgeInsets.all(5),
                     width: double.infinity,
                     child: DragTarget(
                       builder: (BuildContext context,
                           List<DraggableProduct> incoming, List rejected) {
                         return Wrap(
                           children:
-                              dragMaptoList(map: dragMap, target: _target2),
+                              dragMaptoList(map: widget.dragMap, target: 1),
                         );
                       },
                       onWillAccept: (data) => true,
@@ -86,7 +146,7 @@ class _ShelfPage extends State<ShelfPage> {
                         //debugger();
                         setState(
                           () {
-                            dragMap.update(data, (value) => _target2);
+                            widget.dragMap.update(data, (value) => 1);
                           },
                         );
                       },
@@ -97,7 +157,7 @@ class _ShelfPage extends State<ShelfPage> {
               ],
             ),
             Visibility(
-              visible: dragMaptoList(map: dragMap, target: _target3).length > 0,
+              visible: dragMaptoList(map: widget.dragMap, target: 2).length > 0,
               child: DraggableScrollableSheet(
                 minChildSize: 0.1,
                 initialChildSize: 0.1,
@@ -105,17 +165,57 @@ class _ShelfPage extends State<ShelfPage> {
                 builder:
                     (BuildContext context, ScrollController scrollController) {
                   return Container(
+                    margin: EdgeInsets.only(left: 5, right: 5),
                     decoration: BoxDecoration(
-                      color: Colors.orangeAccent,
+                      color: Colors.white,
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(10),
                           topRight: Radius.circular(10)),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 5,
+                          blurRadius: 7,
+                          offset: Offset(0, 3),
+                        )
+                      ],
                     ),
-                    child: ListView(
-                      controller: scrollController,
-                      children: [Center(child: Text('Aus dem letzten Einkauf'))]
-                        ..addAll(dragMaptoList(map: dragMap, target: _target3)),
-                    ),
+                    child: Column(children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 5, top: 5, right: 5),
+                        child: RichText(
+                          text: TextSpan(
+                            text: 'Gerade eingekauft:',
+                            style: TextStyle(
+                                fontSize: 20.0,
+                                fontWeight: FontWeight.normal,
+                                color: Colors.black),
+                          ),
+                        ),
+                      ),
+                      Flexible(
+                        child: GridView.builder(
+                          controller: scrollController,
+                          itemCount:
+                              dragMaptoList(map: widget.dragMap, target: 2)
+                                  .length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Center(
+                                child: dragMaptoList(
+                                        map: widget.dragMap, target: 2)
+                                    .elementAt(index));
+                          },
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 5,
+                            crossAxisSpacing: 0,
+                            mainAxisSpacing: 0,
+                          ),
+                          //children: [Center(child: Text('Aus dem letzten Einkauf'))]
+                          //..addAll(dragMaptoList(map: widget.dragMap, target: 2)),
+                        ),
+                      ),
+                    ]),
                   );
                 },
               ),
@@ -137,38 +237,4 @@ class _ShelfPage extends State<ShelfPage> {
   }
 }
 
-class DraggableProduct extends StatefulWidget {
-  DraggableProduct();
 
-  @override
-  State<StatefulWidget> createState() {
-    return _DraggableProduct();
-  }
-}
-
-class _DraggableProduct extends State<DraggableProduct> {
-  @override
-  Widget build(BuildContext context) {
-    print('build ' + this.widget.hashCode.toString());
-    //debugger();
-    return LongPressDraggable(
-      hapticFeedbackOnStart: true,
-      data: this.widget,
-      child: Container(
-        color: Colors.lightGreen,
-        height: 50,
-        width: 50,
-      ),
-      feedback: Container(
-        color: Colors.orange,
-        height: 50,
-        width: 50,
-      ),
-      childWhenDragging: Container(
-        color: Colors.blue,
-        height: 50,
-        width: 50,
-      ),
-    );
-  }
-}

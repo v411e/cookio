@@ -43,7 +43,6 @@ class NextDaysSection extends StatelessWidget {
               ),
             ),
             Container(
-              height: 100,
               child: Row(
                 children: <Widget>[
                   Container(
@@ -72,17 +71,15 @@ class NextDaysSection extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Expanded(
-                    child: ListView(
-                      shrinkWrap: true,
-                      children: <Widget>[
-                        NextdayIngredientListitem('Tomaten', false),
-                        NextdayIngredientListitem('Nudeln', true),
-                        NextdayIngredientListitem('Parmesan', false),
-                        NextdayIngredientListitem('Gute Laune', true),
-                        NextdayIngredientListitem('Prise Salz', true),
-                      ],
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      NextdayIngredientListitem('Tomaten', false),
+                      NextdayIngredientListitem('Nudeln', true),
+                      NextdayIngredientListitem('Parmesan', false),
+                      NextdayIngredientListitem('Gute Laune', true),
+                      NextdayIngredientListitem('Prise Salz', true),
+                    ],
                   ),
                 ],
               ),

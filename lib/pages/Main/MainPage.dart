@@ -23,12 +23,6 @@ class _MainPage extends State<MainPage> {
           children: <Widget>[
             Column(
               children: <Widget>[
-                /*SearchWidget(
-                  dataList: [1, 2, 3],
-                  popupListItemBuilder: null, //TODO: Implement
-                  selectedItemBuilder: null, //TODO: Implement
-                  queryBuilder: null, //TODO: Implement
-                ),*/
                 NextDaysSection(
                   'Today',
                   'Nudeln mit Tomatensauce',
