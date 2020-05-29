@@ -3,64 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:cookio/pages/DraggableProduct.dart';
 
 class ShelfPage extends StatefulWidget {
-  final Map dragMap = {
-    new DraggableProduct(): 0,
-    new DraggableProduct(): 0,
-    new DraggableProduct(): 0,
-    new DraggableProduct(): 1,
-    new DraggableProduct(): 1,
-    new DraggableProduct(): 1,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-    new DraggableProduct(): 2,
-  };
 
-  ShelfPage();
+  final Map dragMap;
+
+  ShelfPage(this.dragMap);
 
   @override
   State<StatefulWidget> createState() {
@@ -75,86 +21,88 @@ class _ShelfPage extends State<ShelfPage> {
       body: SafeArea(
         child: Stack(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Container(
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Kühlschrank',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
+            Center(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Container(
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Kühlschrank',
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black),
+                      ),
                     ),
-                  ),
-                  margin: EdgeInsets.all(5),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
                     margin: EdgeInsets.all(5),
-                    width: double.infinity,
-                    child: DragTarget(
-                      builder: (BuildContext context,
-                          List<DraggableProduct> incoming, List rejected) {
-                        return Wrap(
-                          children:
-                              dragMaptoList(map: widget.dragMap, target: 0),
-                        );
-                      },
-                      onWillAccept: (data) => true,
-                      onAccept: (data) {
-                        print(data);
-                        setState(
-                          () {
-                            widget.dragMap.update(data, (value) => 0);
-                          },
-                        );
-                      },
-                      onLeave: (data) {},
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      //width: double.infinity,
+                      child: DragTarget(
+                        builder: (BuildContext context,
+                            List<DraggableProduct> incoming, List rejected) {
+                          return Wrap(
+                            children:
+                                dragMaptoList(map: widget.dragMap, target: 0),
+                          );
+                        },
+                        onWillAccept: (data) => true,
+                        onAccept: (data) {
+                          print(data);
+                          setState(
+                            () {
+                              widget.dragMap.update(data, (value) => 0);
+                            },
+                          );
+                        },
+                        onLeave: (data) {},
+                      ),
                     ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.all(5),
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Regal',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.normal,
-                          color: Colors.black),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(
+                  Container(
                     margin: EdgeInsets.all(5),
-                    width: double.infinity,
-                    child: DragTarget(
-                      builder: (BuildContext context,
-                          List<DraggableProduct> incoming, List rejected) {
-                        return Wrap(
-                          children:
-                              dragMaptoList(map: widget.dragMap, target: 1),
-                        );
-                      },
-                      onWillAccept: (data) => true,
-                      onAccept: (data) {
-                        //debugger();
-                        setState(
-                          () {
-                            widget.dragMap.update(data, (value) => 1);
-                          },
-                        );
-                      },
-                      onLeave: (data) {},
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Regal',
+                        style: TextStyle(
+                            fontSize: 20.0,
+                            fontWeight: FontWeight.normal,
+                            color: Colors.black),
+                      ),
                     ),
                   ),
-                ),
-              ],
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      margin: EdgeInsets.all(5),
+                      //width: double.infinity,
+                      child: DragTarget(
+                        builder: (BuildContext context,
+                            List<DraggableProduct> incoming, List rejected) {
+                          return Wrap(
+                            children:
+                                dragMaptoList(map: widget.dragMap, target: 1),
+                          );
+                        },
+                        onWillAccept: (data) => true,
+                        onAccept: (data) {
+                          //debugger();
+                          setState(
+                            () {
+                              widget.dragMap.update(data, (value) => 1);
+                            },
+                          );
+                        },
+                        onLeave: (data) {},
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
             Visibility(
               visible: dragMaptoList(map: widget.dragMap, target: 2).length > 0,
@@ -183,7 +131,8 @@ class _ShelfPage extends State<ShelfPage> {
                     child: Column(children: [
                       Container(
                         margin: EdgeInsets.only(left: 5, top: 5, right: 5),
-                        child: SingleChildScrollView(
+                        width: double.infinity,
+                        child: SingleChildScrollView( //TODO: Disable GlowingOverscrollIndicator
                           controller: scrollController,
                           child: RichText(
                             text: TextSpan(

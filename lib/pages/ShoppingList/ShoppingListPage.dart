@@ -2,16 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:cookio/pages/DraggableProduct.dart';
 
 class ShoppingListPage extends StatefulWidget {
-  final Map dragMap = {
-    new DraggableProduct(): 0,
-    new DraggableProduct(): 0,
-    new DraggableProduct(): 0,
-    new DraggableProduct(): 1,
-    new DraggableProduct(): 1,
-    new DraggableProduct(): 1,
-  };
+  final Map dragMap;
 
-  ShoppingListPage();
+  ShoppingListPage(this.dragMap);
 
   @override
   State<StatefulWidget> createState() {
@@ -32,7 +25,7 @@ class _ShoppingListPage extends State<ShoppingListPage> {
                 Container(
                   child: RichText(
                     text: TextSpan(
-                      text: 'Kühlschrank',
+                      text: 'Wochenmarkt',
                       style: TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.normal,
@@ -71,7 +64,7 @@ class _ShoppingListPage extends State<ShoppingListPage> {
                   margin: EdgeInsets.all(5),
                   child: RichText(
                     text: TextSpan(
-                      text: 'Regal',
+                      text: 'Naturata',
                       style: TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.normal,
@@ -136,7 +129,7 @@ class _ShoppingListPage extends State<ShoppingListPage> {
                         margin: EdgeInsets.only(left: 5, top: 5, right: 5),
                         child: RichText(
                           text: TextSpan(
-                            text: 'Gerade eingekauft:',
+                            text: 'Erledigt:',
                             style: TextStyle(
                                 fontSize: 20.0,
                                 fontWeight: FontWeight.normal,
