@@ -1,3 +1,4 @@
+import 'package:cookio/pages/DraggableProduct.dart';
 import 'package:flutter/material.dart';
 import 'package:cookio/pages/Main/MainPage.dart';
 import 'package:cookio/pages/Shelf/ShelfPage.dart';
@@ -11,6 +12,63 @@ void main() {
 class Cookio extends StatelessWidget {
   // This widget is the root of your application.
 
+  static final Map dragMap = {
+    new DraggableProduct(): 0,
+    new DraggableProduct(): 0,
+    new DraggableProduct(): 0,
+    new DraggableProduct(): 1,
+    new DraggableProduct(): 1,
+    new DraggableProduct(): 1,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+    new DraggableProduct(): 2,
+  };
+
   static final controller = PageController(
     initialPage: 1,
   );
@@ -19,9 +77,9 @@ class Cookio extends StatelessWidget {
     controller: controller,
     scrollDirection: Axis.horizontal,
     children: <Widget>[
-      ShelfPage(),
+      ShelfPage(dragMap),
       MainPage(),
-      ShoppingListPage(),
+      ShoppingListPage(dragMap),
     ],
   );
 
