@@ -25,6 +25,7 @@ dependencies:
     sdk: flutter
   search_widget: 1.0.2
   pull_to_reveal: 0.0.1
+  flutter_launcher_icons: 0.7.5
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -34,6 +35,11 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon_circle.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -76,3 +82,4 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
+
